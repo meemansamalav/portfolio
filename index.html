@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meemansa Malav — The Un-Resume</title>
+  <meta name="description" content="Not the resume version. The actual one. Marketing professional with experience at Times Internet, The Indian Express, and Care Trust.">
+  <meta name="author" content="Meemansa Malav">
+  <meta property="og:title"       content="Meemansa Malav — The Un-Resume">
+  <meta property="og:description" content="A psychology brain in a marketing world.">
+  <meta property="og:type"        content="website">
+  <meta name="theme-color"        content="#050508">
+
+  <!-- Google Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     PRELOADER
+═══════════════════════════════════════════════════ -->
+<div id="preloader" role="status" aria-label="Loading">
+  <div class="cinematic-stage" id="cinematic-stage">
+    <div class="cine-word word-top" id="word-top">
+      <span class="cine-letter m-letter">M</span><span class="type-rest" id="rest-top"></span><span class="cine-cursor" id="cursor-top">|</span>
+    </div>
+    <div class="cine-word word-bottom" id="word-bottom">
+      <span class="cine-letter m-letter">M</span><span class="type-rest" id="rest-bottom"></span><span class="cine-cursor" id="cursor-bottom">|</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     CUSTOM CURSOR (desktop only)
+═══════════════════════════════════════════════════ -->
+<div id="cursor-dot"  aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     GALAXY BACKGROUND
+═══════════════════════════════════════════════════ -->
+<canvas id="galaxy-bg" aria-hidden="true"></canvas>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════ -->
+<header id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" data-magnetic aria-label="Meemansa Malav home">MM</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#work"            class="nav-link">Work</a>
+      <a href="#moments"         class="nav-link">Moments</a>
+      <a href="#recommendations" class="nav-link">Recs</a>
+      <a href="#contact"         class="nav-link">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true" role="dialog" aria-label="Navigation">
+    <nav class="nav-overlay-links">
+      <a href="#work"            class="nav-overlay-link">Work</a>
+      <a href="#moments"         class="nav-overlay-link">Moments</a>
+      <a href="#recommendations" class="nav-overlay-link">Recs</a>
+      <a href="#contact"         class="nav-overlay-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════
+     01 — HERO
+═══════════════════════════════════════════════════ -->
+<section id="hero" class="hero">
+  <div class="container">
+    <p class="eyebrow scramble-text">The Un-Resume &middot; MMXXVI</p>
+
+    <h1 class="hero-headline t-hero" aria-label="Hi, I'm Meemansa.">
+      <span class="hl-word">Hi,&nbsp;</span><span class="hl-word">I'm&nbsp;</span><span class="hl-word">Meemansa.</span>
+    </h1>
+
+    <p class="hero-sub t-body-lg" style="max-width:46ch; margin-top:1.25rem;">
+      Not the resume version. The actual one.
+    </p>
+    <p class="hero-desc t-body" style="max-width:52ch; margin-top:0.75rem; color:var(--muted);">
+      The best way to understand someone isn't through bullet points&thinsp;—<br>
+      it's through who they are when nobody is watching.
+    </p>
+
+    <div class="hero-video-frame">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#work"    class="btn btn-primary" data-magnetic>Explore My Work</a>
+      <a href="#contact" class="btn btn-ghost"   data-magnetic>Let's Connect</a>
+    </div>
+
+    <div class="availability-badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Open to opportunities
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-line"></span>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     00 — THE UNFILTERED VERSION (Manifesto)
+═══════════════════════════════════════════════════ -->
+<section class="section manifesto" id="manifesto">
+  <div class="container">
+    <span class="eyebrow scramble-text manifesto-eyebrow">00 &mdash; The Unfiltered Version</span>
+
+    <div class="manifesto-grid">
+      <div class="manifesto-text-col">
+        <p class="manifesto-body">
+          A psychology brain in a marketing world. Someone who loves learning new things, tears up around animals, and is <em>always quietly planning</em> the next trip.
+        </p>
+        <p class="manifesto-coda" style="margin-top:1.5rem;">
+          Take a look around&thinsp;&mdash;&thinsp;I hope you find someone worth hiring.
+        </p>
+
+        <div class="stats-row" style="margin-top:var(--space-md);">
+          <div class="stat-item">
+            <span class="stat-num" data-count="5">0</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="400+">0</span>
+            <span class="stat-label">Event registrations</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="10+">0</span>
+            <span class="stat-label">Team members led</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="manifesto-visual-wrap">
+        <img src="assets/moments/powerful-dance.jpg"
+             alt="Meemansa celebrating a group dance win"
+             loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     01 — SELECTED WORK
+═══════════════════════════════════════════════════ -->
+<section class="section" id="work">
+  <div class="container section-header">
+    <span class="eyebrow scramble-text">01 &mdash; Selected Work</span>
+    <h2 class="section-title">
+      Problems solved.<br>Teams united.<br>Narratives shaped.
+    </h2>
+    <p class="t-body" style="color:var(--muted); max-width:52ch; margin-top:-1rem;">
+      Campaigns from Times Internet, The Indian Express, and Care Trust.
+    </p>
+  </div>
+
+  <div class="projects container--wide" style="padding-inline: clamp(1.5rem, 5vw, 4rem);">
+
+    <!-- ── Project 1: Times Internet ── -->
+    <article class="project-card" data-accent="accent" data-index="1">
+      <div class="project-inner">
+        <div class="project-visual">
+          <img src="assets/workexp/times-internet.png"
+               alt="Times Internet logo" loading="lazy" decoding="async"
+               class="project-logo">
+          <span class="project-num" aria-hidden="true">01</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <div>
+              <p class="project-company">Times Internet</p>
+              <p class="project-role">Marketing &middot; Events &amp; Community</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Events</span>
+              <span class="tag">Community</span>
+              <span class="tag">Paid Media</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">Marketing as an Ecosystem</h3>
+          <p class="project-summary">
+            Built a multi-stakeholder go-to-market for TSAC &amp; NBT Mic Drop Madness&thinsp;&mdash;&thinsp;paid, partnerships, and people.
+          </p>
+
+          <div class="project-story">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>Events are perhaps one of the hardest products to market. People don't buy an event for what it is — they buy into what they believe it could become for them. A student looked for opportunities, a parent looked for security, a university looked for visibility.</p>
+            </div>
+            <div class="story-block">
+              <h4>Contribution</h4>
+              <p>Meta ad campaigns, competitor analysis, market research, audience segmentation, influencer marketing, and barter partnerships. Reached out to 100+ stakeholders across institutions, partners, and collaborators.</p>
+            </div>
+            <div class="story-block">
+              <h4>What I Took Away</h4>
+              <p>Great marketing begins with understanding people. Data helps you understand what people do, but empathy helps you understand why. You're never really marketing an event — you're creating opportunities for people, ideas, and experiences to come together.</p>
+            </div>
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-num">400+</span>
+              <span class="metric-label">Registrations</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">250+</span>
+              <span class="metric-label">Community in 20 days</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">100+</span>
+              <span class="metric-label">Stakeholders</span>
+            </div>
+          </div>
+
+          <button class="btn-read-more" aria-expanded="false">
+            Read the full story <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Project 2: The Indian Express ── -->
+    <article class="project-card" data-accent="accent-2" data-index="2">
+      <div class="project-inner">
+        <div class="project-visual">
+          <img src="assets/workexp/indian-express.jpg"
+               alt="The Indian Express logo" loading="lazy" decoding="async"
+               class="project-logo">
+          <span class="project-num" aria-hidden="true">02</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <div>
+              <p class="project-company">The Indian Express</p>
+              <p class="project-role">B2B Events &middot; Lead Strategy</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">B2B</span>
+              <span class="tag">CXO Outreach</span>
+              <span class="tag">Lead Gen</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">Data, Then Conversation</h3>
+          <p class="project-summary">
+            Five Oracle / IBM / SAS-backed CXO summits in two months. Built the pipeline from scratch.
+          </p>
+
+          <div class="project-story">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>High-profile B2B events for industry leaders across 5 summits in just two months. Thousands of potential prospects existed but there was no structured pipeline to identify who mattered, how to reach them, or how to make them say yes.</p>
+            </div>
+            <div class="story-block">
+              <h4>Contribution</h4>
+              <p>Using Apollo and EasyLeadz, I mapped and filtered 1,000+ prospects. Personally reached out to 50+ CXOs, conducted 100+ outreach calls, and participated in on-ground execution. Every interaction taught me that B2B marketing is as much about listening as pitching.</p>
+            </div>
+            <div class="story-block">
+              <h4>What I Took Away</h4>
+              <p>Data and people are two completely different problems — you have to be good at both. The tools get you the name. The conversation gets them to show up. When you're on a call with a CXO, you have 30 seconds before they've decided whether you're worth their time.</p>
+            </div>
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-num">+30%</span>
+              <span class="metric-label">Qualified leads</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">1,000+</span>
+              <span class="metric-label">Prospects mapped</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">100+</span>
+              <span class="metric-label">CXOs in the room</span>
+            </div>
+          </div>
+
+          <button class="btn-read-more" aria-expanded="false">
+            Read the full story <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Project 3: Care Trust ── -->
+    <article class="project-card" data-accent="accent-3" data-index="3">
+      <div class="project-inner">
+        <div class="project-visual">
+          <img src="assets/workexp/care-trust.png"
+               alt="Care Trust logo" loading="lazy" decoding="async"
+               class="project-logo">
+          <span class="project-num" aria-hidden="true">03</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <div>
+              <p class="project-company">Care Trust</p>
+              <p class="project-role">Social Impact &middot; CSR Research</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">CSR</span>
+              <span class="tag">Field Ops</span>
+              <span class="tag">Research</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">Empathy Meets Systems Thinking</h3>
+          <p class="project-summary">
+            Menstrual hygiene awareness + sustainable product strategy across schools and villages.
+          </p>
+
+          <div class="project-story">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>Menstrual hygiene is often seen as a health issue. Working at Care Trust revealed the challenge is much larger: lack of awareness, limited access, and social stigma — compounded by environmental impact from non-biodegradable products.</p>
+            </div>
+            <div class="story-block">
+              <h4>Contribution</h4>
+              <p>Collaborated with 5+ government schools, organised 5+ awareness events, coordinated village outreach, helped distribute 200+ sanitary pads, and researched CSR opportunities across Noida. Also conducted competitor analysis for menstrual cup scaling.</p>
+            </div>
+            <div class="story-block">
+              <h4>What I Took Away</h4>
+              <p>Many important challenges persist not because solutions don't exist, but because awareness and access don't reach everyone equally. Lasting impact happens when good intentions are backed by data, execution, and sustainable solutions.</p>
+            </div>
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-num">500+</span>
+              <span class="metric-label">People impacted</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">200+</span>
+              <span class="metric-label">Pads distributed</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">5+</span>
+              <span class="metric-label">Schools partnered</span>
+            </div>
+          </div>
+
+          <button class="btn-read-more" aria-expanded="false">
+            Read the full story <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Project 4: Miskaveda ── -->
+    <article class="project-card" data-accent="accent" data-index="4">
+      <div class="project-inner">
+        <div class="project-visual">
+          <img src="assets/workexp/miskaveda.png"
+               alt="Miskaveda logo" loading="lazy" decoding="async"
+               class="project-logo">
+          <span class="project-num" aria-hidden="true">04</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <div>
+              <p class="project-company">Miskaveda</p>
+              <p class="project-role">Brand &middot; Social Media</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">D2C</span>
+              <span class="tag">Social Media</span>
+              <span class="tag">Content</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">Built From Zero</h3>
+          <p class="project-summary">
+            Built Miskaveda's digital presence from zero across Instagram, Facebook, and LinkedIn.
+          </p>
+
+          <div class="project-story">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>When I joined Miskaveda, the brand existed, but its digital presence didn't — no Instagram, no Facebook, no LinkedIn. In a beauty industry dominated by Forest Essentials and Kama Ayurveda, standing out as a new brand with limited resources required both creativity and clarity.</p>
+            </div>
+            <div class="story-block">
+              <h4>Contribution</h4>
+              <p>Built presence across three platforms, bridged founder and creative team, segmented audiences (18–45), created content around three pillars: educational, relatable, and trending. Collaborated with 3 influencers. Weekly analytics informed strategy refinement.</p>
+            </div>
+            <div class="story-block">
+              <h4>What I Took Away</h4>
+              <p>Building something from nothing teaches you things that maintaining something never can. When resources are limited, clarity becomes your biggest advantage.</p>
+            </div>
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-num">0→400</span>
+              <span class="metric-label">Organic followers</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">3</span>
+              <span class="metric-label">Platforms built</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">3</span>
+              <span class="metric-label">Influencer collabs</span>
+            </div>
+          </div>
+
+          <button class="btn-read-more" aria-expanded="false">
+            Read the full story <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Project 5: Skilled Sapiens ── -->
+    <article class="project-card" data-accent="accent-2" data-index="5">
+      <div class="project-inner">
+        <div class="project-visual">
+          <img src="assets/workexp/skilled-sapiens.png"
+               alt="Skilled Sapiens logo" loading="lazy" decoding="async"
+               class="project-logo">
+          <span class="project-num" aria-hidden="true">05</span>
+        </div>
+
+        <div class="project-content">
+          <div class="project-header">
+            <div>
+              <p class="project-company">Skilled Sapiens</p>
+              <p class="project-role">Content &middot; Social Media &amp; Leadership</p>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Content</span>
+              <span class="tag">Social Media</span>
+              <span class="tag">Leadership</span>
+            </div>
+          </div>
+
+          <h3 class="project-title">Content That Scales</h3>
+          <p class="project-summary">
+            Led social media strategy and a 10-member content team across two brands.
+          </p>
+
+          <div class="project-story">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>Operating in education and consulting, with clients like Caplexus Capital (financial services), the challenge was translating complex concepts into engaging content while maintaining consistency across platforms.</p>
+            </div>
+            <div class="story-block">
+              <h4>Contribution</h4>
+              <p>Created creatives for Instagram and LinkedIn, produced 5+ vox pop videos, managed 2 accounts, was trusted to lead a 10+ person team, conducted 5+ training sessions, and reviewed 50+ creatives — all while balancing academics.</p>
+            </div>
+            <div class="story-block">
+              <h4>What I Took Away</h4>
+              <p>Leadership isn't about having all the answers — it's about creating an environment where people can do their best work. Trust isn't given with a title. It's earned through consistency, reliability, and results.</p>
+            </div>
+          </div>
+
+          <div class="project-metrics">
+            <div class="metric">
+              <span class="metric-num">10+</span>
+              <span class="metric-label">Team members led</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">50+</span>
+              <span class="metric-label">Creatives reviewed</span>
+            </div>
+            <div class="metric">
+              <span class="metric-num">5+</span>
+              <span class="metric-label">Training sessions</span>
+            </div>
+          </div>
+
+          <button class="btn-read-more" aria-expanded="false">
+            Read the full story <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- /projects -->
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SKILLS — HORIZONTAL SCROLL
+═══════════════════════════════════════════════════ -->
+<section class="skills-section" id="skills">
+  <div class="skills-bg-mesh" aria-hidden="true"></div>
+
+  <div class="skills-header">
+    <span class="eyebrow scramble-text">What I bring to the table</span>
+    <h2 class="section-title" style="margin-top:0.5rem; margin-bottom:0;">Core Competencies</h2>
+  </div>
+
+  <div class="skills-track" role="list">
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">📣</span>
+      <p class="skill-name">Paid Media</p>
+      <p class="skill-desc">Meta ads, campaign strategy, audience segmentation, performance analytics.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">🤝</span>
+      <p class="skill-name">Community Building</p>
+      <p class="skill-desc">Stakeholder outreach, partnership management, 100+ touchpoints across institutions.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">🎯</span>
+      <p class="skill-name">B2B Lead Generation</p>
+      <p class="skill-desc">Apollo, EasyLeadz, CXO pipeline management, executive-level outreach.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">✍️</span>
+      <p class="skill-name">Content Strategy</p>
+      <p class="skill-desc">Multi-platform content calendars, reels, static posts, vox pop videos.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">📱</span>
+      <p class="skill-name">Social Media</p>
+      <p class="skill-desc">Instagram, LinkedIn, Facebook — strategy, execution, analytics, and optimisation.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">🌱</span>
+      <p class="skill-name">Brand Building</p>
+      <p class="skill-desc">D2C from scratch, voice &amp; tone, identity development, organic follower growth.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">🎪</span>
+      <p class="skill-name">Events Marketing</p>
+      <p class="skill-desc">End-to-end GTM, influencer collabs, print + digital + social integration.</p>
+    </div>
+    <div class="skill-card" role="listitem">
+      <span class="skill-icon" aria-hidden="true">👥</span>
+      <p class="skill-name">Team Leadership</p>
+      <p class="skill-desc">10+ member teams, training sessions, mentorship, cross-functional coordination.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     03 — POWERFUL MOMENTS
+═══════════════════════════════════════════════════ -->
+<section class="section" id="moments">
+  <div class="container section-header">
+    <span class="eyebrow scramble-text">03 &mdash; Powerful Moments</span>
+    <h2 class="section-title">Milestones that<br>shaped who I am<br>becoming.</h2>
+  </div>
+
+  <div class="container">
+    <div class="moments-grid cinematic-grid">
+
+      <div class="moment-item cine-card hero-moment">
+        <div class="film-tag">ACT I &bull; VICTORY</div>
+        <div class="film-brackets" aria-hidden="true"></div>
+        <img src="assets/moments/powerful-bazaar.jpg"
+             alt="Winning a college-wide business stall competition"
+             loading="lazy" decoding="async">
+        <div class="moment-caption cine-caption">
+          <span class="scene-num">SCENE 01</span>
+          <p>Won a college-wide business stall competition against 150+ participants.</p>
+        </div>
+      </div>
+
+      <div class="moment-item cine-card">
+        <div class="film-tag">ACT II &bull; RHYTHM</div>
+        <div class="film-brackets" aria-hidden="true"></div>
+        <img src="assets/moments/powerful-dance.jpg"
+             alt="Group dance competition win"
+             loading="lazy" decoding="async">
+        <div class="moment-caption cine-caption">
+          <span class="scene-num">SCENE 02</span>
+          <p>Won a college-wide group dance competition.</p>
+        </div>
+      </div>
+
+      <div class="moment-item cine-card">
+        <div class="film-tag">ACT III &bull; LEADERSHIP</div>
+        <div class="film-brackets" aria-hidden="true"></div>
+        <img src="assets/moments/powerful-event.jpg"
+             alt="Organising campus qualifier for IIT Kharagpur competition"
+             loading="lazy" decoding="async">
+        <div class="moment-caption cine-caption">
+          <span class="scene-num">SCENE 03</span>
+          <p>Organised a campus-level qualifier for a business simulation competition at IIT Kharagpur.</p>
+        </div>
+      </div>
+
+      <div class="moment-item cine-card">
+        <div class="film-tag">ACT IV &bull; SCHOLAR</div>
+        <div class="film-brackets" aria-hidden="true"></div>
+        <img src="assets/moments/powerful-paper.png"
+             alt="Academic journal publication"
+             loading="lazy" decoding="async">
+        <div class="moment-caption cine-caption">
+          <span class="scene-num">SCENE 04</span>
+          <p>Published work in a reputed academic journal.</p>
+        </div>
+      </div>
+
+      <div class="moment-item cine-card">
+        <div class="film-tag">ACT V &bull; IMPACT</div>
+        <div class="film-brackets" aria-hidden="true"></div>
+        <img src="assets/moments/powerful-volunteer.jpg"
+             alt="Community outreach for menstrual hygiene"
+             loading="lazy" decoding="async">
+        <div class="moment-caption cine-caption">
+          <span class="scene-num">SCENE 05</span>
+          <p>Volunteered in menstrual hygiene outreach programs for underserved communities.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     03 — PERSONAL ACHIEVEMENTS (Reels)
+═══════════════════════════════════════════════════ -->
+<section class="section" id="reels">
+  <div class="container section-header">
+    <span class="eyebrow scramble-text">The small leaps that shaped me</span>
+    <h2 class="section-title">Personal<br>Achievements</h2>
+  </div>
+
+  <div class="reels-marquee">
+    <div class="reels-track">
+
+      <div class="reel-item">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/FLIGHT_1_1.mov">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">01</p>
+          <p>Boarding a flight all alone</p>
+        </div>
+      </div>
+
+      <div class="reel-item">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel2.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">02</p>
+          <p>Moving to Bangalore at the age of 22</p>
+        </div>
+      </div>
+
+      <div class="reel-item">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel3.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">03</p>
+          <p>Anchoring a large-scale college event</p>
+        </div>
+      </div>
+
+      <div class="reel-item">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel4.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">04</p>
+          <p>Taking a solo trip to Landour</p>
+        </div>
+      </div>
+
+      <div class="reel-item">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel5.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">05</p>
+          <p>Moving to an unknown city and making it home</p>
+        </div>
+      </div>
+
+      <!-- duplicate set for seamless marquee loop -->
+      <div class="reel-item" aria-hidden="true">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/FLIGHT_1_1.mov">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">01</p>
+          <p>Boarding a flight all alone</p>
+        </div>
+      </div>
+
+      <div class="reel-item" aria-hidden="true">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel2.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">02</p>
+          <p>Moving to Bangalore at the age of 22</p>
+        </div>
+      </div>
+
+      <div class="reel-item" aria-hidden="true">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel3.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">03</p>
+          <p>Anchoring a large-scale college event</p>
+        </div>
+      </div>
+
+      <div class="reel-item" aria-hidden="true">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel4.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">04</p>
+          <p>Taking a solo trip to Landour</p>
+        </div>
+      </div>
+
+      <div class="reel-item" aria-hidden="true">
+        <video class="lazy" preload="none" autoplay loop muted playsinline>
+          <source data-src="assets/achieve/reel5.mp4" type="video/mp4">
+        </video>
+        <div class="reel-caption">
+          <p class="reel-num">05</p>
+          <p>Moving to an unknown city and making it home</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     02 — RECOMMENDATIONS
+═══════════════════════════════════════════════════ -->
+<section class="section" id="recommendations">
+  <div class="container section-header">
+    <span class="eyebrow scramble-text">02 &mdash; Recommendations</span>
+    <h2 class="section-title">Hear it from the people<br>who totally didn't get<br>paid to say this.</h2>
+  </div>
+
+  <div class="container">
+    <div class="recs-grid">
+
+      <figure class="rec-card">
+        <div class="rec-shot-wrap">
+          <img src="assets/testimonials/anshul.jpeg"
+               alt="Recommendation from Anshul Mandloi" class="rec-shot" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="rec-caption">
+          <p class="rec-author-name">Anshul Mandloi</p>
+          <p class="rec-author-title">Director, Agnihotri Securities</p>
+        </figcaption>
+      </figure>
+
+      <figure class="rec-card">
+        <div class="rec-shot-wrap">
+          <img src="assets/testimonials/ankita.jpeg"
+               alt="Recommendation from Ankita Pattnaik" class="rec-shot" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="rec-caption">
+          <p class="rec-author-name">Ankita Pattnaik</p>
+          <p class="rec-author-title">Human Resource, Brandzzy–Larapush</p>
+        </figcaption>
+      </figure>
+
+      <figure class="rec-card">
+        <div class="rec-shot-wrap">
+          <img src="assets/testimonials/riya.jpeg"
+               alt="Recommendation from Riya Chopra" class="rec-shot" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="rec-caption">
+          <p class="rec-author-name">Riya Chopra</p>
+          <p class="rec-author-title">Senior Associate, Times Internet</p>
+        </figcaption>
+      </figure>
+
+      <figure class="rec-card">
+        <div class="rec-shot-wrap">
+          <img src="assets/testimonials/rec-shagun.jpeg"
+               alt="Recommendation from Shagun Mishra" class="rec-shot" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="rec-caption">
+          <p class="rec-author-name">Shagun Mishra</p>
+          <p class="rec-author-title">Lead, Community Recognition, Times Internet</p>
+        </figcaption>
+      </figure>
+
+      <figure class="rec-card">
+        <div class="rec-shot-wrap">
+          <img src="assets/testimonials/rec-nikita.jpeg"
+               alt="Recommendation from Nikita Tekwani" class="rec-shot" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="rec-caption">
+          <p class="rec-author-name">Nikita Tekwani</p>
+          <p class="rec-author-title">Brand &amp; Communications Coordinator</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     02 — FAQ
+═══════════════════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="container container--narrow">
+    <span class="eyebrow scramble-text">The questions people actually want answered</span>
+    <h2 class="section-title" style="margin-top:0.5rem;">FAQ</h2>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <h3>
+          <button class="faq-q" aria-expanded="true">
+            What does Meemansa mean?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Meemansa means <em>curiosity</em>. Fitting, considering I've never once accepted "that's just how it is" as an answer.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <h3>
+          <button class="faq-q" aria-expanded="false">
+            What does Meemansa love?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            My family, my friends, every dog I have ever met, travelling to places that make me feel alive, the thrill of a new adventure, meeting people with stories I haven't heard yet, and the fact that there is always something new to learn.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <h3>
+          <button class="faq-q" aria-expanded="false">
+            Where does Meemansa see herself in five years?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            Happy, first. Everything else is secondary to that. Building a career in marketing that actually excites me, being around the people I love, and adding a few stamps to my passport along the way.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <h3>
+          <button class="faq-q" aria-expanded="false">
+            Who does Meemansa admire?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+        </h3>
+        <div class="faq-a" role="region">
+          <div class="faq-a-inner">
+            My parents, without a second thought. Two of the most down-to-earth people I know, who built everything from scratch, gave me more love than I knew what to do with, and somewhere along the way managed to pass on values that I find myself coming back to every single day.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     04 — CONTACT
+═══════════════════════════════════════════════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-bg" aria-hidden="true"></div>
+  <div class="container">
+
+    <span class="eyebrow scramble-text" style="display:block; margin-bottom:var(--space-sm);">
+      04 &mdash; Thanks for making it this far.
+    </span>
+
+    <h2 class="t-display" style="max-width:18ch; margin:0 auto 1rem;">
+      If something here resonated,<br>
+      <span class="grad-text">let's talk.</span>
+    </h2>
+
+    <p class="t-body" style="color:var(--muted); max-width:46ch; margin:0 auto var(--space-sm);">
+      If my experiences, or my way of thinking align with what you're looking for,
+      I'd love to connect.
+    </p>
+
+    <a href="mailto:meemansamalav@gmail.com" class="contact-email" aria-label="Email Meemansa">
+      meemansamalav@gmail.com
+    </a>
+
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/meemansa-malav"
+         class="contact-link" target="_blank" rel="noopener noreferrer"
+         aria-label="LinkedIn profile">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <a href="tel:+919911512052" class="contact-link" aria-label="Call Meemansa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+        </svg>
+        +91 99115 12052
+      </a>
+
+      <a href="mailto:meemansamalav@gmail.com" class="contact-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        meemansamalav@gmail.com
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; MMXXVI &middot; Meemansa Malav &middot; The Un-Resume</p>
+      <p class="footer-copy" style="opacity:0.5; font-size:0.7rem;">
+        Built with curiosity &mdash; just like everything else.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     CDN DEPENDENCIES (loaded before ES6 module)
+═══════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<!-- MODULE ENTRY — loads after all blocking scripts -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

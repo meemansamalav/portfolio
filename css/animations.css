@@ -1,0 +1,189 @@
+/* ─── Keyframes ──────────────────────────────────────────────── */
+
+@keyframes badgePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+@keyframes blobMorph {
+  0%   { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+  33%  { border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
+  66%  { border-radius: 55% 45% 60% 40% / 40% 60% 45% 55%; }
+  100% { border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%; }
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translateY(0)    rotate(0deg); }
+  50%       { transform: translateY(-18px) rotate(4deg); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0)    rotate(0deg); }
+  50%       { transform: translateY(12px) rotate(-3deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes trailFade {
+  from { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  to   { opacity: 0;   transform: translate(-50%,-50%) scale(0.2); }
+}
+
+@keyframes lineGrow {
+  from { stroke-dashoffset: var(--dash-total); }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ─── Initial GSAP states (invisible until JS inits) ─────────── */
+
+/* Set these via JS, but declare them so they're predictable */
+.js-fade {
+  opacity: 0;
+}
+
+.js-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.js-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.js-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.js-scale {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+/* Chars start below + rotated (hero headline) */
+.split-char {
+  display: inline-block;
+  /* Initial state set via JS: translateY(120%) rotate(8deg) opacity 0 */
+}
+
+/* ─── Blob morph on manifesto image ──────────────────────────── */
+.manifesto-visual-wrap {
+  animation: blobMorph 8s ease-in-out infinite;
+}
+
+/* ─── Animated gradient button ───────────────────────────────── */
+.btn-primary {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* ─── Loading bar ────────────────────────────────────────────── */
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ─── Card hover lift ────────────────────────────────────────── */
+.project-card {
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Skill card shimmer ─────────────────────────────────────── */
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+/* ─── Preloader bar animation ────────────────────────────────── */
+.preloader-bar-fill {
+  animation: none; /* driven by JS */
+}
+
+/* ─── Nav logo gradient on hover ─────────────────────────────── */
+.nav-logo {
+  transition: opacity 0.25s;
+}
+
+.nav-logo:hover {
+  opacity: 0.7;
+}
+
+/* ─── Reel play overlay ──────────────────────────────────────── */
+.reel-item video {
+  cursor: pointer;
+}
+
+/* ─── Timeline entry slide-in (initial state for GSAP) ──────── */
+.timeline-entry {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+
+/* ─── Moment item scale-in (transform cleared by GSAP so :hover works) ─ */
+.moment-item {
+  opacity: 0;
+}
+
+/* ─── Rec card fade-in (transform owned by layout.css tilt) ──── */
+.rec-card {
+  opacity: 0;
+}
+
+/* ─── Manifesto text initial state ──────────────────────────── */
+.manifesto-body,
+.manifesto-coda {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ─── Stats count-up initial state ──────────────────────────── */
+.stat-num {
+  opacity: 0;
+}
+
+/* ─── Contact email hover letter-spacing transition ──────────── */
+.contact-email-char {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Scroll progress line (hero bottom) ────────────────────── */
+.scroll-indicator {
+  opacity: 0;
+  animation: none; /* JS controls */
+}
+
+/* ─── Preloader digit bounce ─────────────────────────────────── */
+@keyframes digitChange {
+  from { transform: translateY(-12px); opacity: 0; }
+  to   { transform: translateY(0);      opacity: 1; }
+}
+
+/* ─── Hero sub + desc (start invisible for GSAP) ────────────── */
+.hero-sub,
+.hero-desc,
+.hero-ctas,
+.availability-badge,
+.scroll-indicator {
+  opacity: 0;
+}
+
+.hero-headline {
+  overflow: hidden;
+}

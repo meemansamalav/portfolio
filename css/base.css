@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;700;900&family=Space+Grotesk:wght@700;900&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --bg:               #050508;
+  --bg-2:             #0c0c14;
+  --bg-3:             #111120;
+  --fg:               #e8e6ff;
+  --accent:           #7c3aed;
+  --accent-2:         #db2777;
+  --accent-3:         #0ea5e9;
+  --accent-warm:      #f97316;
+  --muted:            rgba(232, 230, 255, 0.82);
+  --muted-2:          rgba(232, 230, 255, 0.1);
+  --border:           rgba(232, 230, 255, 0.08);
+  --border-hover:     rgba(232, 230, 255, 0.18);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #7c3aed, #db2777, #f97316);
+  --gradient-cool:    linear-gradient(135deg, #0ea5e9, #7c3aed);
+  --gradient-warm:    linear-gradient(135deg, #db2777, #f97316);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Inter', monospace;
+
+  /* Spacing */
+  --space-xs:   clamp(0.5rem,  1vw, 0.75rem);
+  --space-sm:   clamp(1rem,    2vw, 1.5rem);
+  --space-md:   clamp(2rem,    4vw, 3.5rem);
+  --space-lg:   clamp(4rem,    8vw, 7rem);
+  --space-xl:   clamp(6rem,   12vw, 11rem);
+  --space-2xl:  clamp(8rem,   16vw, 14rem);
+
+  /* UI */
+  --radius-lg:  1.75rem;
+  --radius:     1.25rem;
+  --radius-sm:  0.75rem;
+  --radius-xs:  0.4rem;
+  --transition: 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Z-layers */
+  --z-bg:       0;
+  --z-content:  1;
+  --z-nav:      100;
+  --z-overlay:  500;
+  --z-cursor:   9999;
+  --z-loader:   10000;
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+/* ─── Typography Scale ──────────────────────────────────────── */
+.t-hero {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 10vw, 11.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.t-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.t-body-lg {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.t-body {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.t-small {
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  line-height: 1.6;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Gradient text helper ──────────────────────────────────── */
+.grad-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-cool {
+  background: var(--gradient-cool);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Selection ─────────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ─── Focus outline ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ─── Mobile cursor reset ───────────────────────────────────── */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+}
