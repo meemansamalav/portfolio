@@ -223,6 +223,57 @@ function initMobileNav() {
   });
 }
 
+/* ── Recommendation Lightbox Modal ───────────────────────── */
+export function initRecModal() {
+  let modal = document.getElementById('rec-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'rec-modal';
+    modal.className = 'rec-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.innerHTML = `
+      <div class="rec-modal-content">
+        <button class="rec-modal-close" aria-label="Close modal">&times;</button>
+        <div class="rec-modal-img-wrap">
+          <img src="" alt="Recommendation Letter" class="rec-modal-img" id="rec-modal-img">
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.rec-modal-close');
+    closeBtn.addEventListener('click', closeRecModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeRecModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeRecModal();
+      }
+    });
+  }
+}
+
+export function openRecModal(imgSrc, name, title) {
+  const modal = document.getElementById('rec-modal');
+  const img = document.getElementById('rec-modal-img');
+  if (modal && img) {
+    img.src = imgSrc;
+    img.alt = `Recommendation letter from ${name} (${title})`;
+    modal.classList.add('open');
+  }
+}
+
+export function closeRecModal() {
+  const modal = document.getElementById('rec-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+window.openRecModal = openRecModal;
+window.closeRecModal = closeRecModal;
+
 /* ── Master init ────────────────────────────────────────────────── */
 export function initInteractions() {
   initMagnetic();
@@ -230,4 +281,5 @@ export function initInteractions() {
   initLazyVideos();
   initFAQ();
   initMobileNav();
+  initRecModal();
 }

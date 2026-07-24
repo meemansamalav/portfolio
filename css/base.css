@@ -71,24 +71,24 @@ body {
 .t-hero {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.5rem, 10vw, 11.5rem);
-  line-height: 0.92;
+  font-size: clamp(2.5rem, 6.5vw, 6.25rem);
+  line-height: 0.95;
   letter-spacing: -0.03em;
 }
 
 .t-display {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2rem, 7vw, 6.5rem);
-  line-height: 0.95;
+  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  line-height: 1.02;
   letter-spacing: -0.03em;
 }
 
 .t-title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(1.75rem, 4.5vw, 4rem);
-  line-height: 1.05;
+  font-size: clamp(1.5rem, 3.2vw, 3rem);
+  line-height: 1.08;
   letter-spacing: -0.025em;
 }
 
@@ -159,7 +159,8 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* ─── Mobile cursor reset ───────────────────────────────────── */
-@media (max-width: 768px) {
-  body { cursor: auto; }
+/* ─── Mobile touch cursor reset ─────────────────────────────── */
+@media (max-width: 768px), (hover: none) {
+  body, a, button, input, [role="button"] { cursor: auto !important; }
+  #cursor-dot, #cursor-ring, .cursor-trail { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
 }

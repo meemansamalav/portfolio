@@ -1,0 +1,395 @@
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE.CSS — Breakpoint system for all 5 viewports
+   Breakpoints:
+     xs  : 0–479px    (small phones)
+     sm  : 480–767px  (large phones)
+     md  : 768–1023px (tablets)
+     lg  : 1024–1279px (small laptops)
+     xl  : 1280px+   (desktops & wide screens)
+   Container pad & font sizes handled via clamp() in base.css;
+   this file handles structural layout changes per breakpoint.
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── XS: 0–479px  (small phones) ─────────────────────────── */
+@media (max-width: 479px) {
+
+  /* Typography */
+  html { font-size: 14px; }
+
+  .t-hero    { font-size: 2.2rem; }
+  .t-display { font-size: 1.75rem; }
+  .t-title   { font-size: 1.4rem; }
+  .section-title { font-size: 2rem; line-height: 1.05; }
+  .manifesto-body { font-size: 1.35rem; }
+  .hero-headline  { font-size: 2.2rem; }
+
+  /* Container */
+  .container { padding-inline: 1.1rem; }
+  .container--wide { padding-inline: 1.1rem; }
+
+  /* Hero — single column, stacked */
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5.5rem;
+    padding-bottom: 2rem;
+    gap: 1.75rem;
+  }
+  .hero-video-frame {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 3/4;
+    margin: 0 auto;
+    max-height: 56svh;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .btn { padding: 0.8em 1.5em; font-size: 0.85rem; }
+  .hero-desc { font-size: 0.95rem !important; }
+  .availability-badge { font-size: 0.72rem; }
+  .scroll-indicator { display: none; }
+
+  /* Manifesto — full stacked */
+  .manifesto-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .manifesto-visual-wrap {
+    aspect-ratio: 4/3;
+    border-radius: 48px 48px 16px 16px;
+    order: -1;
+  }
+  .stats-row { gap: 1.25rem; }
+  .stat-num { font-size: 2rem; }
+
+  /* Work cards — single col, slim visual */
+  .project-inner,
+  .project-card:nth-child(even) .project-inner {
+    grid-template-columns: 1fr;
+  }
+  .project-visual {
+    min-height: 150px;
+    aspect-ratio: 16/6;
+    padding: 1rem;
+  }
+  .project-logo {
+    max-width: 120px;
+    max-height: 60px;
+  }
+  .project-content { padding: 1.25rem; gap: 0.75rem; }
+  .project-title { font-size: 1.2rem; }
+  .project-metrics { gap: 1rem; }
+  .project-tags { gap: 0.25rem; }
+
+  /* Skills — 1 col */
+  .skills-track {
+    grid-template-columns: 1fr;
+    padding-inline: 1.1rem;
+    gap: 1rem;
+  }
+  .skills-header { padding-inline: 1.1rem; }
+  .skill-card { padding: 1.25rem; }
+
+  /* Moments gallery — 1 col */
+  .cinematic-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .cine-card, .cine-card.hero-moment { aspect-ratio: 16/10; }
+  .cine-caption { padding: 0.75rem 0.85rem 0.85rem; }
+  .cine-caption p { font-size: 0.85rem; }
+  .film-tag { font-size: 0.6rem; padding: 0.25rem 0.5rem; }
+
+  /* Reels marquee */
+  .reel-item { flex: 0 0 150px; }
+
+  /* Recs grid — single col */
+  .recs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .rec-card:nth-child(odd),
+  .rec-card:nth-child(even) { transform: rotate(0deg); }
+
+  /* FAQ */
+  .faq-q { font-size: 1rem; }
+
+  /* Contact */
+  .contact-email { font-size: clamp(1rem, 8vw, 1.75rem); }
+  .contact-links { gap: 1rem; flex-direction: column; align-items: center; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+
+  /* Nav overlay links */
+  .nav-overlay-link { font-size: 2.5rem; }
+}
+
+/* ─── SM: 480–767px  (large phones / small tablets) ─────────── */
+@media (min-width: 480px) and (max-width: 767px) {
+
+  html { font-size: 15px; }
+
+  .t-hero    { font-size: 2.65rem; }
+  .section-title { font-size: 2.4rem; }
+  .manifesto-body { font-size: 1.6rem; }
+  .hero-headline  { font-size: 2.65rem; }
+
+  .container { padding-inline: 1.5rem; }
+
+  /* Hero */
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 6rem;
+    padding-bottom: 2.5rem;
+    gap: 2rem;
+  }
+  .hero-video-frame {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3/4;
+    margin: 0 auto;
+    max-height: 60svh;
+  }
+  .hero-ctas { flex-wrap: wrap; gap: 0.75rem; }
+  .hero-desc { font-size: 1rem !important; }
+
+  /* Manifesto */
+  .manifesto-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .manifesto-visual-wrap {
+    aspect-ratio: 4/3;
+    border-radius: 60px 60px 20px 20px;
+    order: -1;
+  }
+  .stats-row { gap: 1.75rem; }
+
+  /* Work cards */
+  .project-inner,
+  .project-card:nth-child(even) .project-inner {
+    grid-template-columns: 1fr;
+  }
+  .project-visual {
+    min-height: 180px;
+    aspect-ratio: 16/6;
+  }
+  .project-content { padding: 1.5rem; }
+  .project-logo { max-width: 140px; max-height: 70px; }
+
+  /* Skills — 2 col */
+  .skills-track {
+    grid-template-columns: repeat(2, 1fr);
+    padding-inline: 1.5rem;
+    gap: 1rem;
+  }
+  .skills-header { padding-inline: 1.5rem; }
+
+  /* Moments */
+  .cinematic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .cine-card, .cine-card.hero-moment { aspect-ratio: 4/3; }
+
+  /* Reels */
+  .reel-item { flex: 0 0 170px; }
+
+  /* Recs — single col */
+  .recs-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .rec-card:nth-child(odd),
+  .rec-card:nth-child(even) { transform: rotate(0deg); }
+
+  /* Contact */
+  .contact-email { font-size: clamp(1.2rem, 7vw, 2rem); }
+  .contact-links { gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; align-items: center; gap: 0.5rem; }
+}
+
+/* ─── MD: 768–1023px  (tablets, landscape phones) ────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  html { font-size: 15.5px; }
+
+  .t-hero    { font-size: clamp(2.8rem, 5.5vw, 4rem); }
+  .section-title { font-size: clamp(2.4rem, 5.5vw, 3.5rem); }
+  .manifesto-body { font-size: clamp(1.5rem, 3.2vw, 2rem); }
+
+  .container { padding-inline: 2rem; }
+
+  /* Hero — two col but compressed */
+  .hero .container {
+    grid-template-columns: 1fr min(280px, 36vw);
+    column-gap: 2.5rem;
+    padding-top: 7rem;
+  }
+  .hero-video-frame {
+    width: 100%;
+    max-height: 65svh;
+  }
+
+  /* Manifesto — two col with reduced gap */
+  .manifesto-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .manifesto-visual-wrap { aspect-ratio: 3/4; }
+
+  /* Work cards */
+  .project-inner {
+    grid-template-columns: 40% 1fr;
+    min-height: clamp(240px, 35vw, 400px);
+  }
+  .project-card:nth-child(even) .project-inner {
+    grid-template-columns: 1fr 40%;
+  }
+  .project-content { padding: 2rem; }
+  .project-logo { max-width: 150px; max-height: 80px; }
+
+  /* Skills — 2 col */
+  .skills-track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* Moments — 2 col + overflow last */
+  .cinematic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .cine-card:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/6;
+  }
+
+  /* Reels */
+  .reel-item { flex: 0 0 200px; }
+
+  /* Recs — 2 col */
+  .recs-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  /* Nav */
+  .nav-inner { padding: 1rem 2rem; }
+
+  /* Contact */
+  .contact-email { font-size: clamp(1.5rem, 5vw, 3rem); }
+  .contact-links { gap: 2rem; }
+
+  /* Footer */
+  .footer-inner { flex-direction: row; justify-content: space-between; }
+}
+
+/* ─── LG: 1024–1279px  (small laptops, iPad Pro landscape) ──── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  html { font-size: 15.5px; }
+
+  .t-hero    { font-size: clamp(3rem, 5.5vw, 5rem); }
+  .section-title { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
+
+  .container { padding-inline: 2.5rem; }
+
+  /* Hero */
+  .hero .container {
+    grid-template-columns: minmax(0, 1fr) min(360px, 32vw);
+    column-gap: 3rem;
+    padding-top: 7.5rem;
+  }
+  .hero-video-frame { width: 100%; max-height: 70svh; }
+
+  /* Work cards */
+  .project-inner { grid-template-columns: 36% 1fr; }
+  .project-card:nth-child(even) .project-inner { grid-template-columns: 1fr 36%; }
+
+  /* Skills — 3 col */
+  .skills-track { grid-template-columns: repeat(3, 1fr); }
+
+  /* Moments — 3 col */
+  .cinematic-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Recs — 3 col */
+  .recs-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Contact */
+  .contact-email { font-size: clamp(1.8rem, 4.5vw, 3.5rem); }
+}
+
+/* ─── XL: 1280px+  (full desktops, widescreen) ────────────────── */
+@media (min-width: 1280px) {
+
+  html { font-size: 16px; }
+
+  .t-hero    { font-size: clamp(3.5rem, 5.5vw, 6.25rem); }
+  .section-title { font-size: clamp(3.5rem, 6vw, 5.5rem); }
+
+  /* Hero */
+  .hero .container {
+    grid-template-columns: minmax(0, 1fr) min(420px, 30vw);
+    column-gap: clamp(4rem, 6vw, 7rem);
+    padding-top: clamp(6rem, 10vw, 10rem);
+  }
+
+  /* Skills — 4 col on very wide screens */
+  @media (min-width: 1440px) {
+    .skills-track { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* Recs — 3 or 4 col on wide */
+  .recs-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Reel items — slightly wider */
+  .reel-item { flex: 0 0 clamp(200px, 20vw, 280px); }
+}
+
+/* ─── Utility: reduce motion ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reels-track { animation: none !important; }
+  .manifesto-visual-wrap { animation: none !important; }
+  .btn-primary { animation: none !important; }
+}
+
+/* ─── Utility: high density touch targets (mobile) ─────────── */
+@media (max-width: 767px) {
+  .btn { min-height: 44px; min-width: 44px; }
+  .nav-link, .nav-overlay-link { min-height: 44px; display: flex; align-items: center; }
+  .faq-q { min-height: 48px; }
+  .hamburger { width: 44px; height: 44px; justify-content: center; }
+  .contact-link { min-height: 44px; }
+}
+
+/* ─── Landscape phone safety (short viewports) ───────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100svh;
+    padding-block: 1rem;
+  }
+  .hero .container {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+  }
+  .hero-video-frame {
+    display: none; /* hide portrait photo in landscape small height */
+  }
+  .scroll-indicator { display: none; }
+}
+
+/* ─── Print ──────────────────────────────────────────────────── */
+@media print {
+  #galaxy-bg, #preloader, #cursor-dot, #cursor-ring,
+  .cursor-trail, .reels-marquee, .scroll-indicator,
+  .nav-overlay, #nav { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .container { max-width: 100%; padding: 0; }
+  .section { padding-block: 1.5rem; }
+  .project-card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}

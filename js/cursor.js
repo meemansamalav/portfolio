@@ -4,12 +4,16 @@
  */
 
 export function initCursor() {
-  /* Skip on touch/mobile */
-  if (window.matchMedia('(max-width: 768px)').matches) return;
-  if (window.matchMedia('(hover: none)').matches) return;
-
   const dot  = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
+
+  /* Skip on touch/mobile */
+  if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(hover: none)').matches) {
+    if (dot) dot.style.display = 'none';
+    if (ring) ring.style.display = 'none';
+    return;
+  }
+
   if (!dot || !ring) return;
 
   /* ── State ─────────────────────────────────────────────────── */

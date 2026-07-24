@@ -220,25 +220,26 @@ function _animateLines(selector, delayOffset = 0) {
   });
 }
 
-/* ── Horizontal skills scroll ──────────────────────────────────── */
+/* ── Core Competencies animation ────────────────────────────── */
 function _initHorizontalScroll() {
-  const section = document.querySelector('.skills-section');
-  const track   = document.querySelector('.skills-track');
-  if (!section || !track) return;
+  const cards = document.querySelectorAll('.skill-card');
+  if (!cards.length) return;
 
-  /* Delay until layout is calculated */
-  ScrollTrigger.create({
-    trigger: section,
-    pin:     true,
-    start:   'top top',
-    end:     () => `+=${track.scrollWidth - window.innerWidth + 200}`,
-    scrub:   1,
-    invalidateOnRefresh: true,
-    animation: gsap.to(track, {
-      x: () => -(track.scrollWidth - window.innerWidth + 100),
-      ease: 'none',
-    }),
-  });
+  gsap.fromTo(cards,
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.skills-section',
+        start: 'top 80%',
+        once: true
+      }
+    }
+  );
 }
 
 /* ── Timeline ──────────────────────────────────────────────────── */

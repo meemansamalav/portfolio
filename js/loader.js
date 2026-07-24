@@ -23,6 +23,7 @@ export function initLoader() {
     const finish = () => {
       if (done) return;
       done = true;
+      if (window.__loaderDone) window.__loaderDone();
       preloader.classList.add('exit');
       setTimeout(() => {
         preloader.style.display = 'none';
