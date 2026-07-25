@@ -82,17 +82,17 @@ body::before {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow:
-    0 30px 80px -20px rgba(0,0,0,0.85),
+    0 30px 80px -24px rgba(0,0,0,0.85),
     0 0 0 1px rgba(255,255,255,0.08) inset,
-    0 0 70px -15px rgba(124, 58, 237, 0.35);
+    0 0 40px -18px rgba(124, 58, 237, 0.25);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .hero-video-frame:hover {
   transform: translateY(-4px) scale(1.015);
   box-shadow:
-    0 35px 90px -20px rgba(0,0,0,0.9),
-    0 0 80px -10px rgba(219, 39, 119, 0.4);
+    0 35px 90px -22px rgba(0,0,0,0.9),
+    0 0 45px -14px rgba(219, 39, 119, 0.28);
 }
 
 .hero-video {
@@ -150,18 +150,18 @@ body::before {
   border-radius: 120px 120px 24px 24px;
   overflow: hidden;
   border: 1px solid rgba(232, 230, 255, 0.15);
-  box-shadow: 
-    0 25px 60px -20px rgba(0, 0, 0, 0.8),
-    0 0 50px -10px rgba(124, 58, 237, 0.25),
+  box-shadow:
+    0 25px 60px -22px rgba(0, 0, 0, 0.8),
+    0 0 30px -12px rgba(124, 58, 237, 0.18),
     inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
 }
 
 .manifesto-visual-wrap:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 
-    0 35px 80px -20px rgba(0, 0, 0, 0.9),
-    0 0 60px -5px rgba(219, 39, 119, 0.35);
+  box-shadow:
+    0 35px 80px -22px rgba(0, 0, 0, 0.9),
+    0 0 35px -10px rgba(219, 39, 119, 0.22);
 }
 
 .manifesto-visual-wrap img {
@@ -223,9 +223,25 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-2);
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(232, 230, 255, 0.05) 0%, transparent 65%),
+    linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
+  background-size: 100% 100%, 100% 100%;
   overflow: hidden;
   padding: var(--space-md);
+}
+
+.project-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(232, 230, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 230, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 0%, transparent 75%);
+          mask-image: radial-gradient(ellipse at 50% 50%, #000 0%, transparent 75%);
+  pointer-events: none;
 }
 
 .project-content {

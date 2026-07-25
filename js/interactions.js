@@ -182,23 +182,39 @@ function initLazyVideos() {
 
 /* ── FAQ accordion ──────────────────────────────────────────────── */
 function initFAQ() {
-  document.querySelectorAll('.faq-item').forEach(item => {
+  const items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+
+  items.forEach(item => {
     const btn = item.querySelector('.faq-q');
     if (!btn) return;
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const isOpen = item.classList.contains('open');
 
-      /* Close all */
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      /* Close all items */
+      items.forEach(other => {
+        other.classList.remove('open');
+        const otherBtn = other.querySelector('.faq-q');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
 
-      if (!isOpen) item.classList.add('open');
+      /* Toggle current item */
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
   /* Open first by default */
-  const first = document.querySelector('.faq-item');
-  if (first) first.classList.add('open');
+  const first = items[0];
+  if (first) {
+    first.classList.add('open');
+    const firstBtn = first.querySelector('.faq-q');
+    if (firstBtn) firstBtn.setAttribute('aria-expanded', 'true');
+  }
 }
 
 /* ── Mobile nav toggle ──────────────────────────────────────────── */
