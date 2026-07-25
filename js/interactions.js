@@ -205,21 +205,37 @@ function initFAQ() {
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger');
   const overlay   = document.getElementById('nav-overlay');
+  const closeBtn  = document.getElementById('nav-overlay-close');
   if (!hamburger || !overlay) return;
 
+  function closeNav() {
+    hamburger.classList.remove('open');
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function openNav() {
+    hamburger.classList.add('open');
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
   hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    overlay.classList.toggle('open', open);
-    overlay.setAttribute('aria-hidden', String(!open));
-    hamburger.setAttribute('aria-expanded', String(open));
+    const isOpen = overlay.classList.contains('open');
+    if (isOpen) closeNav();
+    else openNav();
   });
 
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeNav);
+  }
+
   overlay.querySelectorAll('.nav-overlay-link').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-    });
+    a.addEventListener('click', closeNav);
   });
 }
 
@@ -262,13 +278,28 @@ export function openRecModal(imgSrc, name, title) {
   if (modal && img) {
     img.src = imgSrc;
     img.alt = `Recommendation letter from ${name} (${title})`;
-    modal.classList.add('open');
+    modal.style.display = 'flex';
+    // Small delay to allow display: flex to apply before transitioning opacity
+    setTimeout(() => {
+      modal.classList.add('open');
+    }, 10);
   }
 }
 
 export function closeRecModal() {
   const modal = document.getElementById('rec-modal');
-  if (modal) modal.classList.remove('open');
+  if (modal) {
+    modal.classList.remove('open');
+    // Wait for opacity transition before hiding
+    setTimeout(() => {
+      modal.style.display = 'none';
+      const img = document.getElementById('rec-modal-img');
+      if (img) {
+        img.src = '';
+        img.alt = '';
+      }
+    }, 350);
+  }
 }
 
 window.openRecModal = openRecModal;

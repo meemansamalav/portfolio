@@ -13,6 +13,16 @@
 /* ─── XS: 0–479px  (small phones) ─────────────────────────── */
 @media (max-width: 479px) {
 
+  /* Section & Spacing overrides to eliminate mobile whitespace gaps */
+  .section,
+  .skills-section,
+  .contact-section {
+    padding-block: 2.25rem !important;
+  }
+  .section-header {
+    margin-bottom: 1.25rem !important;
+  }
+
   /* Typography */
   html { font-size: 14px; }
 
@@ -28,12 +38,15 @@
   .container--wide { padding-inline: 1.1rem; }
 
   /* Hero — single column, stacked */
+  .hero {
+    min-height: auto;
+  }
   .hero .container {
     display: flex;
     flex-direction: column;
-    padding-top: 5.5rem;
+    padding-top: 5rem;
     padding-bottom: 2rem;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
   .hero-video-frame {
     width: 100%;
@@ -59,10 +72,11 @@
     border-radius: 48px 48px 16px 16px;
     order: -1;
   }
-  .stats-row { gap: 1.25rem; }
+  .stats-row { gap: 1.25rem; margin-top: 1.25rem; }
   .stat-num { font-size: 2rem; }
 
   /* Work cards — single col, slim visual */
+  .projects { gap: 1.5rem; }
   .project-inner,
   .project-card:nth-child(even) .project-inner {
     grid-template-columns: 1fr;
@@ -116,13 +130,20 @@
 
   /* Contact */
   .contact-email { font-size: clamp(1rem, 8vw, 1.75rem); }
-  .contact-links { gap: 1rem; flex-direction: column; align-items: center; }
+  .contact-links {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    flex-wrap: wrap !important;
+  }
 
   /* Footer */
   .footer-inner { flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
 
   /* Nav overlay links */
-  .nav-overlay-link { font-size: 2.5rem; }
+  .nav-overlay-link { font-size: 2.25rem; }
 }
 
 /* ─── SM: 480–767px  (large phones / small tablets) ─────────── */
