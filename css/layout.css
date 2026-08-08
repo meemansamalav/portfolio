@@ -125,6 +125,29 @@ body::before {
   align-items: center;
 }
 
+.hero-sub {
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.hero-sub-text {
+  color: var(--muted);
+}
+
+.hero-sub-highlight {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 @media (min-width: 901px) {
   .hero-headline {
     font-size: clamp(3.25rem, 5.5vw, 5.5rem);
@@ -139,40 +162,19 @@ body::before {
 
 .manifesto-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem, 6vw, 6rem);
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: center;
 }
 
 .manifesto-visual-wrap {
   position: relative;
-  aspect-ratio: 3/4;
-  border-radius: 120px 120px 24px 24px;
-  overflow: hidden;
-  border: 1px solid rgba(232, 230, 255, 0.15);
-  box-shadow:
-    0 25px 60px -22px rgba(0, 0, 0, 0.8),
-    0 0 30px -12px rgba(124, 58, 237, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-}
-
-.manifesto-visual-wrap:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow:
-    0 35px 80px -22px rgba(0, 0, 0, 0.9),
-    0 0 35px -10px rgba(219, 39, 119, 0.22);
-}
-
-.manifesto-visual-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s ease;
-}
-
-.manifesto-visual-wrap:hover img {
-  transform: scale(1.05);
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ─── Work / Projects ───────────────────────────────────────── */
@@ -223,10 +225,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(ellipse at 50% 40%, rgba(232, 230, 255, 0.05) 0%, transparent 65%),
-    linear-gradient(180deg, var(--bg-3) 0%, var(--bg-2) 100%);
-  background-size: 100% 100%, 100% 100%;
+  background: #06060c;
   overflow: hidden;
   padding: var(--space-md);
 }
@@ -236,12 +235,11 @@ body::before {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(232, 230, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232, 230, 255, 0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 0%, transparent 75%);
-          mask-image: radial-gradient(ellipse at 50% 50%, #000 0%, transparent 75%);
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 30px 30px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .project-content {
@@ -252,86 +250,7 @@ body::before {
   gap: var(--space-sm);
 }
 
-/* ─── Skills horizontal ──────────────────────────────────────── */
-.skills-section {
-  position: relative;
-  z-index: var(--z-content);
-  padding-block: var(--space-xl);
-}
 
-.skills-track {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(1.25rem, 2vw, 2rem);
-  padding-inline: clamp(1.5rem, 5vw, 4rem);
-  width: 100%;
-}
-
-.skill-card {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: calc(var(--radius) * 1.5);
-  padding: clamp(1.75rem, 3vw, 2.5rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
-}
-
-.skill-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(124, 58, 237, 0.05);
-}
-
-/* ─── Experience / Timeline ─────────────────────────────────── */
-.timeline {
-  position: relative;
-  padding-left: clamp(2rem, 5vw, 4rem);
-}
-
-.timeline-line-wrap {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-}
-
-.timeline-line-wrap svg {
-  width: 2px;
-  height: 100%;
-}
-
-.timeline-entries {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 6vw, 5rem);
-}
-
-.timeline-entry {
-  position: relative;
-  display: grid;
-  grid-template-columns: clamp(90px, 15vw, 140px) 1fr;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  align-items: start;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: calc(-1 * clamp(2rem, 5vw, 4rem) - 5px);
-  top: 0.4rem;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 12px var(--accent);
-}
 
 /* ─── Cinematic Moments Gallery ─────────────────────────────── */
 .cinematic-grid {
@@ -490,20 +409,19 @@ body::before {
 
 .rec-card {
   position: relative;
-  background: rgba(16, 16, 28, 0.85);
-  border: 1px solid rgba(232, 230, 255, 0.12);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(124, 58, 237, 0.06) 45%, rgba(12, 12, 22, 0.92) 100%);
+  border: 1px solid rgba(232, 230, 255, 0.18);
   border-radius: var(--radius);
-  padding: clamp(1.5rem, 2.5vw, 2rem);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(1.6rem, 2.8vw, 2.25rem);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1.25rem;
-  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
 }
 
 .rec-card:nth-child(odd)  { transform: rotate(-1.4deg); }
@@ -511,10 +429,11 @@ body::before {
 
 .rec-card:hover {
   transform: rotate(0deg) translateY(-6px) scale(1.02);
+  border-color: rgba(244, 114, 182, 0.4);
   box-shadow:
-    0 30px 70px -20px rgba(0,0,0,0.85),
-    0 0 0 1px rgba(124,58,237,0.4),
-    0 2px 6px rgba(0,0,0,0.35);
+    0 30px 75px -20px rgba(0, 0, 0, 0.9),
+    0 0 35px -10px rgba(219, 39, 119, 0.35),
+    0 0 0 1px rgba(244, 114, 182, 0.3);
   z-index: 5;
 }
 

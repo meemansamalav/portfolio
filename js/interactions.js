@@ -84,56 +84,171 @@ function initMagnetic() {
   });
 }
 
-/* ── Project card expand / collapse ────────────────────────────── */
+/* ── Project card modal pop-up with tabbed reader ─────────────── */
 function initProjectCards() {
-  const cards = [...document.querySelectorAll('.project-card')];
+  const cards = document.querySelectorAll('.project-card');
+  const modal = document.getElementById('projectModal');
+  const modalContainer = modal?.querySelector('.project-modal-container');
+  const modalBackdrop = document.getElementById('projectModalBackdrop');
+  const modalClose = document.getElementById('projectModalClose');
+  const modalCompany = document.getElementById('modalCompany');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalRole = document.getElementById('modalRole');
+  const modalTabs = document.getElementById('modalTabs');
+  const modalContentArea = document.getElementById('modalContentArea');
+  const modalBody = document.getElementById('modalBody');
+
+  if (!cards.length) return;
+
+  // Trackpad / Touchpad gesture isolation
+  if (modalContainer) {
+    modalContainer.addEventListener('wheel', e => e.stopPropagation());
+    modalContainer.addEventListener('touchmove', e => e.stopPropagation());
+  }
 
   cards.forEach(card => {
-    const btn   = card.querySelector('.btn-read-more');
-    const story = card.querySelector('.project-story');
-    if (!btn || !story) return;
+    const btn = card.querySelector('.btn-read-more');
+    if (!btn) return;
 
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      const isOpen = card.classList.contains('expanded');
-
-      /* Close all others */
-      cards.forEach(c => {
-        if (c !== card) collapse(c);
-      });
-
-      if (isOpen) {
-        collapse(card);
-      } else {
-        expand(card);
-      }
+      openModal(card);
     });
   });
 
-  function expand(card) {
-    const story = card.querySelector('.project-story');
-    const btn   = card.querySelector('.btn-read-more');
-    const others = cards.filter(c => c !== card);
+  function openModal(card) {
+    if (!modal || !modalTabs || !modalContentArea) return;
 
-    story.classList.add('open');
-    card.classList.add('expanded');
-    if (btn) btn.querySelector('.arrow').textContent = '↑';
+    const company = card.querySelector('.project-company')?.textContent || '';
+    const title = card.querySelector('.project-title')?.textContent || '';
+    const role = card.querySelector('.project-role')?.innerHTML || '';
+    const storyBlocks = card.querySelectorAll('.story-block');
 
-    gsap.to(others, { opacity: 0.4, scale: 0.99, duration: 0.4, ease: 'power2.out' });
-    gsap.to(card,   { scale: 1.01, duration: 0.5, ease: 'power3.inOut' });
+    if (modalCompany) modalCompany.textContent = company;
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalRole) modalRole.innerHTML = role;
+
+    // Reset tabs and content
+    modalTabs.innerHTML = '';
+    modalContentArea.innerHTML = '';
+    if (modalBody) modalBody.scrollTop = 0;
+
+    const sections = [];
+    storyBlocks.forEach(block => {
+      const heading = block.querySelector('h4')?.textContent || 'Section';
+      const textHtml = block.querySelector('p')?.innerHTML || '';
+      sections.push({ heading, textHtml });
+    });
+
+    // Create Navigation Pills for each section
+    sections.forEach((sec, idx) => {
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = `modal-tab-pill ${idx === 0 ? 'active' : ''}`;
+      pill.textContent = sec.heading;
+      pill.setAttribute('role', 'tab');
+      pill.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+
+      pill.addEventListener('click', () => {
+        activateTab(idx);
+      });
+
+      modalTabs.appendChild(pill);
+    });
+
+    // Add "Full Story" pill tab
+    const fullPill = document.createElement('button');
+    fullPill.type = 'button';
+    fullPill.className = 'modal-tab-pill';
+    fullPill.textContent = 'Full Story';
+    fullPill.setAttribute('role', 'tab');
+    fullPill.addEventListener('click', () => {
+      activateFullStory();
+    });
+    modalTabs.appendChild(fullPill);
+
+    function activateTab(index) {
+      const pills = modalTabs.querySelectorAll('.modal-tab-pill');
+      pills.forEach((p, i) => {
+        const isActive = i === index;
+        p.classList.toggle('active', isActive);
+        p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      const targetSec = sections[index];
+      if (!targetSec) return;
+
+      modalContentArea.innerHTML = `
+        <div class="modal-story-section">
+          <div class="modal-section-title">${targetSec.heading}</div>
+          <div class="modal-section-text">${targetSec.textHtml}</div>
+        </div>
+      `;
+
+      if (modalBody) modalBody.scrollTop = 0;
+    }
+
+    function activateFullStory() {
+      const pills = modalTabs.querySelectorAll('.modal-tab-pill');
+      pills.forEach((p, i) => {
+        const isActive = i === sections.length;
+        p.classList.toggle('active', isActive);
+        p.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      let fullHtml = '';
+      sections.forEach(sec => {
+        fullHtml += `
+          <div class="modal-story-block">
+            <div class="modal-section-title">${sec.heading}</div>
+            <div class="modal-section-text">${sec.textHtml}</div>
+          </div>
+        `;
+      });
+
+      modalContentArea.innerHTML = `
+        <div class="modal-story-section">
+          ${fullHtml}
+        </div>
+      `;
+
+      if (modalBody) modalBody.scrollTop = 0;
+    }
+
+    // Default to first tab (The Problem)
+    activateTab(0);
+
+    // Pause Lenis smooth scroll & Lock background
+    if (window.lenis) window.lenis.stop();
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+
+    // Show modal popup
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    if (modalClose) modalClose.focus();
   }
 
-  function collapse(card) {
-    const story = card.querySelector('.project-story');
-    const btn   = card.querySelector('.btn-read-more');
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
 
-    story.classList.remove('open');
-    card.classList.remove('expanded');
-    if (btn) btn.querySelector('.arrow').textContent = '→';
-
-    gsap.to(card, { scale: 1, opacity: 1, duration: 0.4, ease: 'power2.out' });
-    gsap.to(cards, { opacity: 1, scale: 1, duration: 0.4, ease: 'power2.out' });
+    // Resume Lenis smooth scroll & Unlock background
+    if (window.lenis) window.lenis.start();
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
   }
+
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+      closeModal();
+    }
+  });
 }
 
 /* ── Stat counter ───────────────────────────────────────────────── */
@@ -255,71 +370,132 @@ function initMobileNav() {
   });
 }
 
-/* ── Recommendation Lightbox Modal ───────────────────────── */
-export function initRecModal() {
-  let modal = document.getElementById('rec-modal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'rec-modal';
-    modal.className = 'rec-modal';
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.innerHTML = `
-      <div class="rec-modal-content">
-        <button class="rec-modal-close" aria-label="Close modal">&times;</button>
-        <div class="rec-modal-img-wrap">
-          <img src="" alt="Recommendation Letter" class="rec-modal-img" id="rec-modal-img">
-        </div>
-      </div>
-    `;
-    document.body.appendChild(modal);
 
-    const closeBtn = modal.querySelector('.rec-modal-close');
-    closeBtn.addEventListener('click', closeRecModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeRecModal();
-    });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
-        closeRecModal();
+/* ── Smooth scroll for nav anchor links ────────────────────────── */
+function initAnchorSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId === '#' || !targetId) return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        if (window.lenis) {
+          window.lenis.scrollTo(targetEl, { offset: -60, duration: 1.2 });
+        } else {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
-  }
+  });
 }
 
-export function openRecModal(imgSrc, name, title) {
-  const modal = document.getElementById('rec-modal');
-  const img = document.getElementById('rec-modal-img');
-  if (modal && img) {
-    img.src = imgSrc;
-    img.alt = `Recommendation letter from ${name} (${title})`;
-    modal.style.display = 'flex';
-    // Small delay to allow display: flex to apply before transitioning opacity
-    setTimeout(() => {
-      modal.classList.add('open');
-    }, 10);
-  }
-}
+/* ── 3D Cascading Ellipse Slider for Recommendations ───────────── */
+function initRecs3D() {
+  const stage = document.getElementById('recsStage');
+  if (!stage) return;
 
-export function closeRecModal() {
-  const modal = document.getElementById('rec-modal');
-  if (modal) {
-    modal.classList.remove('open');
-    // Wait for opacity transition before hiding
-    setTimeout(() => {
-      modal.style.display = 'none';
-      const img = document.getElementById('rec-modal-img');
-      if (img) {
-        img.src = '';
-        img.alt = '';
+  const cards = Array.from(stage.querySelectorAll('.rec-card-3d'));
+  const dots = Array.from(document.querySelectorAll('.recs-dot'));
+  const prevBtn = document.getElementById('recsPrev');
+  const nextBtn = document.getElementById('recsNext');
+
+  const total = cards.length;
+  if (!total) return;
+
+  let activeIndex = 0;
+  let autoTimer = null;
+  const AUTO_INTERVAL = 3500;
+
+  function updatePositions() {
+    cards.forEach((card, i) => {
+      let offset = (i - activeIndex) % total;
+      if (offset < 0) offset += total;
+      card.className = `rec-card rec-card-3d pos-${offset}`;
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  function goToNext() {
+    activeIndex = (activeIndex + 1) % total;
+    updatePositions();
+  }
+
+  function goToPrev() {
+    activeIndex = (activeIndex - 1 + total) % total;
+    updatePositions();
+  }
+
+  function goToIndex(index) {
+    activeIndex = index % total;
+    updatePositions();
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoTimer = setInterval(goToNext, AUTO_INTERVAL);
+  }
+
+  function stopAutoPlay() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
+
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if (activeIndex !== index) {
+        goToIndex(index);
+        startAutoPlay();
       }
-    }, 350);
-  }
-}
+    });
+  });
 
-window.openRecModal = openRecModal;
-window.closeRecModal = closeRecModal;
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      goToNext();
+      startAutoPlay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      goToPrev();
+      startAutoPlay();
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      goToIndex(index);
+      startAutoPlay();
+    });
+  });
+
+  stage.addEventListener('mouseenter', stopAutoPlay);
+  stage.addEventListener('mouseleave', startAutoPlay);
+
+  let touchStartX = 0;
+  stage.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoPlay();
+  }, { passive: true });
+
+  stage.addEventListener('touchend', e => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 40) {
+      if (diff < 0) goToNext();
+      else goToPrev();
+    }
+    startAutoPlay();
+  }, { passive: true });
+
+  updatePositions();
+  startAutoPlay();
+}
 
 /* ── Master init ────────────────────────────────────────────────── */
 export function initInteractions() {
@@ -328,5 +504,6 @@ export function initInteractions() {
   initLazyVideos();
   initFAQ();
   initMobileNav();
-  initRecModal();
+  initAnchorSmoothScroll();
+  initRecs3D();
 }

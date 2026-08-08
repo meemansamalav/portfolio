@@ -30,6 +30,7 @@ export function initScroll(options = {}) {
     gsap.ticker.lagSmoothing(0);
 
     lenis.on('scroll', ScrollTrigger.update);
+    window.lenis = lenis;
   }
 
   /* ── Register ScrollTrigger ─────────────────────────────────── */
@@ -98,12 +99,6 @@ export function initScroll(options = {}) {
       }
     );
   });
-
-  /* ── Skills horizontal scroll (pinned) ──────────────────────── */
-  _initHorizontalScroll();
-
-  /* ── Timeline SVG + entries ─────────────────────────────────── */
-  _initTimeline();
 
   /* ── Moments gallery ────────────────────────────────────────── */
   gsap.utils.toArray('.moment-item').forEach((item, i) => {
@@ -220,57 +215,4 @@ function _animateLines(selector, delayOffset = 0) {
   });
 }
 
-/* ── Core Competencies animation ────────────────────────────── */
-function _initHorizontalScroll() {
-  const cards = document.querySelectorAll('.skill-card');
-  if (!cards.length) return;
 
-  gsap.fromTo(cards,
-    { opacity: 0, y: 30 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      stagger: 0.08,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.skills-section',
-        start: 'top 80%',
-        once: true
-      }
-    }
-  );
-}
-
-/* ── Timeline ──────────────────────────────────────────────────── */
-function _initTimeline() {
-  const line    = document.querySelector('.timeline-path');
-  const entries = document.querySelectorAll('.timeline-entry');
-
-  if (line) {
-    const len = line.getTotalLength?.() ?? 1000;
-    gsap.set(line, { strokeDasharray: len, strokeDashoffset: len });
-
-    gsap.to(line, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.timeline',
-        start:   'top 70%',
-        end:     'bottom 30%',
-        scrub:   2,
-      },
-    });
-  }
-
-  entries.forEach((entry, i) => {
-    gsap.to(entry, {
-      opacity: 1,
-      x:       0,
-      duration: 0.7,
-      ease:    'power3.out',
-      delay:   i * 0.05,
-      scrollTrigger: { trigger: entry, start: 'top 85%', once: true },
-    });
-  });
-}
